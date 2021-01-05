@@ -1,0 +1,14 @@
+spring:
+    database:
+        driverClassName: com.mysql.jdbc.Driver
+    datasource:
+        password: 123
+        url: jdbc:mysql://localhost:3306/desafio
+        username: root
+    jpa:
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQL5Dialect
+                show_sql: true
+                hbm2ddl:
+                    auto: validate
