@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("pessoa")
 public class PessoaController {
@@ -28,7 +30,7 @@ public class PessoaController {
     }
 
     @PostMapping()
-    public ResponseEntity<Void> salvar(@RequestBody PessoaDTO request){
+    public ResponseEntity<Void> salvar(@RequestBody @Valid PessoaDTO request){
         Pessoa entidade = mapper.converterPessoaParaEntidade(request);
         service.salvar(entidade);
         return ResponseEntity.status(HttpStatus.CREATED).build();

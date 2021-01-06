@@ -1,11 +1,16 @@
 package br.com.zup.desafio.dto;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 
 public class PessoaDTO {
+    @NotNull(message = "Nome é um atributo obrigatório")
     private String nome;
+    @NotNull(message = "CPF é um atributo obrigatório")
     private String cpf;
+    @NotNull(message = "E-mail é um atributo obrigatório")
     private String email;
+    @NotNull(message = "Data de nascimento é um atributo obrigatório")
     private LocalDate dataNascimento;
 
     public PessoaDTO(String nome, String cpf, String email, LocalDate dataNascimento) {
