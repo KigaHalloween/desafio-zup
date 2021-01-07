@@ -30,19 +30,11 @@ public class PessoaController {
     }
 
     @PostMapping()
-    public ResponseEntity<Void> salvar(@RequestBody @Valid PessoaDTO request){
+    public ResponseEntity<PessoaDTO> salvar(@RequestBody @Valid PessoaDTO request){
         Pessoa entidade = mapper.converterPessoaParaEntidade(request);
-        service.salvar(entidade);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
-    }
-
-    @GetMapping()
-    public void buscarDados(){
-        System.out.println("buscar dados");
-    }
-
-    @PutMapping()
-    public void alterarDados(){
-        System.out.println("alterar dados");
+        Pessoa pessoaCadastrada = service.salvar(entidade);
+        PessoaDTO resposta = mapper.convertePessoaParaDTO(pessoaCadastrada);
+        return ResponseEntity.status(HttpStatus.CREATED).body(resposta);
     }
 }
+

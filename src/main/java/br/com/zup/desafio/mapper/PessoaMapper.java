@@ -15,4 +15,14 @@ public class PessoaMapper {
         entidadePessoa.setDataNascimento(parametro.getDataNascimento());
         return entidadePessoa;
     }
+
+    public PessoaDTO convertePessoaParaDTO(Pessoa parametro){
+        PessoaDTO pessoaDTO = new PessoaDTO();
+        pessoaDTO.setNome(parametro.getNome());
+        pessoaDTO.setCpf(parametro.getCpf());
+        pessoaDTO.setEmail(parametro.getEmail());
+        pessoaDTO.setDataNascimento(parametro.getDataNascimento());
+        pessoaDTO.setId(parametro.getId());
+        return pessoaDTO;
+    }
 }

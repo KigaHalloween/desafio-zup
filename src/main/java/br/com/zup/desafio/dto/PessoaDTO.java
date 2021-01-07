@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 
 public class PessoaDTO {
+    private Long id;
     @NotNull(message = "Nome é um atributo obrigatório")
     private String nome;
     @NotNull(message = "CPF é um atributo obrigatório")
@@ -21,6 +22,13 @@ public class PessoaDTO {
     }
 
     public PessoaDTO() { }
+
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id){
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;

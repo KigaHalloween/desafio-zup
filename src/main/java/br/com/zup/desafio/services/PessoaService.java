@@ -2,6 +2,7 @@ package br.com.zup.desafio.services;
 
 import br.com.zup.desafio.entity.Pessoa;
 import br.com.zup.desafio.repository.PessoaRepository;
+import br.com.zup.desafio.validation.PessoaNaoEncontradaException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,7 +14,11 @@ public class PessoaService {
         this.repository = repository;
     }
 
-    public void salvar(Pessoa entidade){
-        repository.save(entidade);
+    public Pessoa salvar(Pessoa entidade){
+        Boolean existaPessoa = repository.existsByCpfOrEmail(entidade.getCpf(), entidade.getEmail());
+        if(existaPessoa) {
+           throw new PessoaNaoEncontradaException();
+        }
+        return repository.save(entidade);
     }
 }
